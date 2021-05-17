@@ -4,33 +4,67 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.Base64;
 
+/**
+ * Класс Employee. Описывает сотрудника организации.
+ */
 public class Employee implements Externalizable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private String surname; // фамилия
-    private String name; // имя
-    private String patronymic; // отчество
-    private LocalDate birthDate; // дата рождения
-    private Gender gender; // пол
-    private String phoneNumber; // номер телефона
-    private String post; // должность
-    private Department department; // отдел
-    private Employee chief; // начальник
-    private LocalDate employmentDate; // дата приема на работу
-    private double salary; // зарплата
+    private String surname;
+    private String name;
+    private String patronymic;
+    private LocalDate birthDate;
+    private Gender gender;
+    private String phoneNumber;
+    private String post;
+    private Department department;
+    private Employee chief;
+    private LocalDate employmentDate;
+    private double salary;
     private Role role;
     private String login;
     private String password;
 
+    /**
+     * Конструктор по умолчанию (для Externalizable).
+     */
     public Employee() {
     }
 
-    public Employee(String surname, String name, String patronymic, LocalDate birthDate,
-                    Gender gender, String phoneNumber, String post, Department department,
-                    Employee chief, LocalDate employmentDate, double salary,
-                    Role role, String login, String password) {
+    /**
+     * Конструктор с параметрами.
+     *
+     * @param surname        - фамилия.
+     * @param name           - имя.
+     * @param patronymic     - отчество.
+     * @param birthDate      - дата рождения.
+     * @param gender         - пол.
+     * @param phoneNumber    - номер телефона.
+     * @param post           - должность.
+     * @param department     - отдел в котором работает сотрудник..
+     * @param chief          - непосредственный начальник.
+     * @param employmentDate - дата приема на работу.
+     * @param salary         - значение заработной платы.
+     * @param role           - роль, права доступа сотрудника к базе данных.
+     * @param login          - логин.
+     * @param password       - пароль.
+     */
+    public Employee(String surname,
+                    String name,
+                    String patronymic,
+                    LocalDate birthDate,
+                    Gender gender,
+                    String phoneNumber,
+                    String post,
+                    Department department,
+                    Employee chief,
+                    LocalDate employmentDate,
+                    double salary,
+                    Role role,
+                    String login,
+                    String password) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
@@ -46,6 +80,10 @@ public class Employee implements Externalizable {
         this.login = login;
         this.password = password;
     }
+
+    /**
+     * Геттеры и сеттеры.
+     */
 
     public String getSurname() {
         return surname;
@@ -159,10 +197,21 @@ public class Employee implements Externalizable {
         this.password = password;
     }
 
+    /**
+     * Метод служит для возврата строки с ФИО сотрудника.
+     *
+     * @return - ФИО сотрудника.
+     */
     public String getFullName() {
         return surname + " " + name + " " + patronymic;
     }
 
+    /**
+     * Метод служит для вывода полной информации о сотруднике (исключая логин и пароль),
+     * для сотрудников с ролью HR_OFFICE и ADMINISTRATOR.
+     *
+     * @return - строка с полной информацией о сотруднике (исключая логин и пароль).
+     */
     @Override
     public String toString() {
         return role.getRoleType() + ": " + surname + " " + name + " " + patronymic + System.lineSeparator() +
@@ -177,6 +226,12 @@ public class Employee implements Externalizable {
                 "Зарплата: " + salary;
     }
 
+    /**
+     * Метод для сериализации объекта сотрудника через интерфейс Externalizable.
+     *
+     * @param out - сериализованный объект.
+     * @throws IOException - бросаемое исключение.
+     */
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(surname);
@@ -195,6 +250,13 @@ public class Employee implements Externalizable {
         out.writeObject(encryptString(password));
     }
 
+    /**
+     * Метод для десериализации объекта сотрудника через интерфейс Externalizable.
+     *
+     * @param in - сериализованный объект.
+     * @throws IOException            - бросаемое исключение.
+     * @throws ClassNotFoundException - бросаемое исключение.
+     */
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         surname = (String) in.readObject();
@@ -213,14 +275,23 @@ public class Employee implements Externalizable {
         password = decryptString((String) in.readObject());
     }
 
+    /**
+     * Метод для шифрования полей login или password.
+     *
+     * @param data - текстовая строка с логином или паролем.
+     * @return - возваращает зашифрованную строку.
+     */
     private String encryptString(String data) {
         return Base64.getEncoder().encodeToString(data.getBytes());
     }
 
+    /**
+     * Метод для дешифрования поля login или password.
+     *
+     * @param data - принимает зашщифрованную строку.
+     * @return - возвращает расшифрованную строку login или password.
+     */
     private String decryptString(String data) {
         return new String(Base64.getDecoder().decode(data));
     }
-
-
-
 }

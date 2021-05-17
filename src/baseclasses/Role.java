@@ -1,5 +1,8 @@
 package baseclasses;
 
+/**
+ * Класс перечисления ролей (прав доступа) сотрудников.
+ */
 public enum Role {
     EMPLOYEE("Сотрудник"),
     HR_OFFICER("Кадровик"),

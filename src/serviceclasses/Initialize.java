@@ -5,13 +5,24 @@ import baseclasses.*;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Класс для первичной инициализации базы данных дефолтными значениями.
+ */
 public class Initialize {
     private DataBase dataBase;
 
+    /**
+     * Конструктор с параметрами.
+     *
+     * @param dataBase - принимает ссылку на чистую базу данных.
+     */
     public Initialize(DataBase dataBase) {
         this.dataBase = dataBase;
     }
 
+    /**
+     * Метод инициализации/заполнения списка должностей.
+     */
     public void postsInit() {
         List<String> posts = dataBase.getPosts();
         posts.add("Генеральный директор");
@@ -30,6 +41,9 @@ public class Initialize {
         posts.add("Экономист");
     }
 
+    /**
+     * Метод для заполнения/инициализации списка отделов.
+     */
     public void departmentInit() {
         List<Department> departments = dataBase.getDepartments();
         departments.add(new Department("АО Энергосетевая Компания", null, null));
@@ -48,6 +62,9 @@ public class Initialize {
         departments.add(new Department("Группа ремонта и капитального строительства", departments.get(11), null));
     }
 
+    /**
+     * Метод для заполнения/инициализации списка сотрудников.
+     */
     public void employeeInit() {
         List<Employee> employees = dataBase.getEmployees();
         employees.add(new Employee("Лебедев", "Дмитрий", "Сергеевич", LocalDate.of(1982, 4, 3),
@@ -127,6 +144,9 @@ public class Initialize {
                 employees.get(0), LocalDate.of(2012, 5, 15), 65_000, Role.ADMINISTRATOR, "admin", "admin"));
     }
 
+    /**
+     * Метод для заполнения/инициализации начальников отделов.
+     */
     public void departmentChiefInit() {
         List<Department> departments = dataBase.getDepartments();
         List<Employee> employees = dataBase.getEmployees();

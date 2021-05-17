@@ -11,15 +11,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Класс описывает работу IT отдела (унаследован от класса HROffice).
+ */
 public class AdminPanel extends HROffice {
 
     private DataBase dataBase;
 
+    /**
+     * Конструктор с параметрами.
+     *
+     * @param dataBase - ссылка на базу данных.
+     */
     public AdminPanel(DataBase dataBase) {
         super(dataBase);
         this.dataBase = dataBase;
     }
 
+    /**
+     * Переопределенный метод добавления (приема на работу) нового сотрудника.
+     * Отличается от метода в классе HROffice тем, что позволяет добавлять
+     * сотрудников с ролями HR_OFFICER и ADMINISTRATOR.
+     */
     public void addNewEmployee() {
         Scanner scanner = new Scanner(System.in);
         Service.println("Выберите роль сотрудника:");
@@ -45,6 +58,9 @@ public class AdminPanel extends HROffice {
         dataBase.getEmployees().add(employee);
     }
 
+    /**
+     * Метод позволяет удалить отдел.
+     */
     public void deleteDepartment() {
         Service.println("Выберите отдел для удаления:");
         List<Employee> departmentEmployees = new ArrayList<>();

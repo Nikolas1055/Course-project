@@ -6,21 +6,33 @@ import serviceclasses.Service;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Класс описывает работу отдела кадров.
+ */
 public class HROffice {
 
     private DataBase dataBase;
 
+    /**
+     * Конструктор с параметрами.
+     *
+     * @param dataBase - принимает ссылку на базу данных.
+     */
     public HROffice(DataBase dataBase) {
         this.dataBase = dataBase;
     }
 
+    /**
+     * Метод для добавления нового сотрудника в базу данных (прием на работу).
+     */
     public void addNewEmployee() {
         dataBase.getEmployees().add(getEmployeeData());
     }
 
-    public Employee getEmployeeData() {
+    protected Employee getEmployeeData() {
         Scanner scanner = new Scanner(System.in);
         Service.println("Введите фамилию:");
         String surname = scanner.nextLine();
@@ -53,6 +65,9 @@ public class HROffice {
                 post, department, chief, employmentDate, salary, Role.EMPLOYEE, "guest", "guest");
     }
 
+    /**
+     * Метод для добавления нового отдела в базу данных.
+     */
     public void addNewDepartment() {
         Scanner scanner = new Scanner(System.in);
         Service.println("Введите название отдела:");
@@ -64,12 +79,18 @@ public class HROffice {
         dataBase.getDepartments().add(new Department(departmentName, superiorDepartment, chief));
     }
 
+    /**
+     * Метод для добавления новой должности в базу данных.
+     */
     public void addNewPost() {
         Scanner scanner = new Scanner(System.in);
         Service.println("Введите название должности:");
         dataBase.getPosts().add(scanner.nextLine());
     }
 
+    /**
+     * Метод для изменения данных существующего отдела.
+     */
     public void changeDepartment() {
         Scanner scanner = new Scanner(System.in);
         Service.println("Выберите отдел для изменения:");
@@ -85,6 +106,9 @@ public class HROffice {
         departmentForChange.setChief(chief);
     }
 
+    /**
+     * Метод для изменения данных существующего сотрудника.
+     */
     public void changeEmployee() {
         Service.println("Выберите сотрудника для изменения информации:");
         Employee employeeForChange = getEmployee();
@@ -103,6 +127,9 @@ public class HROffice {
         employeeForChange.setSalary(employeeNewData.getSalary());
     }
 
+    /**
+     * Метод для удаления сотрудника из базы данных (увольнение).
+     */
     public void dismissEmployee() {
         Service.println("Выберите сотрудника для увольнения:");
         for (int i = 0; i < dataBase.getEmployees().size(); i++) {
@@ -114,7 +141,7 @@ public class HROffice {
                 if (department.getChief().equals(employeeForDismiss)) {
                     Service.println("Вы не можете уволить этого сотрудника. Он является начальником отдела - " +
                             department.getName());
-                    Service.println("Назначте другого сотрудника начальником этого отдела и попробуйте еще раз.");
+                    Service.println("Назначьте другого сотрудника начальником этого отдела и попробуйте еще раз.");
                     return;
                 }
             }
@@ -124,7 +151,11 @@ public class HROffice {
         }
     }
 
-    public LocalDate setDate() {
+    /***
+     * Метод для получения объекта LocalDate из введенной строки.
+     * @return - возвращает объект LocalDate.
+     */
+    protected LocalDate setDate() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             String inputDate = scanner.nextLine();
@@ -136,58 +167,90 @@ public class HROffice {
         }
     }
 
-    public String setPost() {
+    /**
+     * Метод для получения должности из списка должностей.
+     *
+     * @return - строка с должностью.
+     */
+    protected String setPost() {
         while (true) {
             for (int i = 0; i < dataBase.getPosts().size(); i++) {
                 Service.println((i + 1) + ". " + dataBase.getPosts().get(i));
             }
-            try {
-                return dataBase.getPosts().get(Service.selector() - 1);
-            } catch (IndexOutOfBoundsException e) {
-                Service.println("Такой должности в списке нет. Повторите выбор.");
+            String post = getListElement(dataBase.getPosts(), (Service.selector() - 1));
+            if (post != null) {
+                return post;
             }
+            Service.println("Такой должности в списке нет. Повторите выбор.");
         }
     }
 
-    public Department setDepartment() {
+    /**
+     * Метод для получения ссылки на объект отдела.
+     *
+     * @return - ссылка на отдел.
+     */
+    protected Department setDepartment() {
         while (true) {
             for (int i = 0; i < dataBase.getDepartments().size(); i++) {
                 Service.println((i + 1) + ". " + dataBase.getDepartments().get(i).getName());
             }
-            try {
-                return dataBase.getDepartments().get(Service.selector() - 1);
-            } catch (IndexOutOfBoundsException e) {
-                Service.println("Такого отдела в списке нет. Повторите выбор.");
+            Department department = getListElement(dataBase.getDepartments(), (Service.selector() - 1));
+            if (department != null) {
+                return department;
             }
+            Service.println("Такого отдела в списке нет. Повторите выбор.");
         }
     }
 
-    public Employee setChief() {
+    /**
+     * Метод для получения ссылки на сотрудника, который является непосредственным начальником.
+     *
+     * @return - ссылка на сотрудника.
+     */
+    protected Employee setChief() {
         for (int i = 0; i < dataBase.getEmployees().size(); i++) {
             Service.println((i + 1) + ". " + dataBase.getEmployees().get(i).getFullName());
         }
         Service.println("Если непосредственного начальника нет, сделайте любой другой выбор.");
-        try {
-            return dataBase.getEmployees().get(Service.selector() - 1);
-        } catch (IndexOutOfBoundsException e) {
-            return null;
-        }
+        return getListElement(dataBase.getEmployees(), (Service.selector() - 1));
     }
 
-    public Employee getEmployee() {
+    /**
+     * Метод получения ссылки на сотрудника для изменения данных.
+     *
+     * @return - ссылка на сотрудника.
+     */
+    protected Employee getEmployee() {
         while (true) {
             for (int i = 0; i < dataBase.getEmployees().size(); i++) {
                 Service.println((i + 1) + ". " + dataBase.getEmployees().get(i).getFullName());
             }
-            try {
-                Employee employee = dataBase.getEmployees().get(Service.selector() - 1);
+            Employee employee = getListElement(dataBase.getEmployees(), (Service.selector() - 1));
+            if (employee != null) {
                 if (employee.getRole().equals(Role.EMPLOYEE)) {
                     return employee;
                 }
                 Service.println("Вы не можете изменить данные этого сотрудника. Обратитесь к администратору.");
-            } catch (IndexOutOfBoundsException e) {
+            } else {
                 Service.println("Некорректный выбор, попробуйте еще раз.");
             }
+        }
+    }
+
+    /**
+     * Обобщенный метод получения значения из List.
+     *
+     * @param list   - List объектов любого типа.
+     * @param choice - индекс элемента.
+     * @param <T>    - обощенный тип списка.
+     * @return - возвращает элемент списка по индексу, либо null при выходе за границы списка.
+     */
+    protected <T> T getListElement(List<T> list, int choice) {
+        try {
+            return list.get(choice);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
         }
     }
 }

@@ -6,8 +6,17 @@ import baseclasses.Role;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Класс описывает логику авторизации в программе.
+ */
 public class Authorization {
 
+    /**
+     * Статический метод для выбора типа авторизации.
+     *
+     * @param employees - принимает ссылку на список сотрудников организации.
+     * @return - возвращает результат авторизации в виде роли.
+     */
     public static Role authUser(List<Employee> employees) {
         Service.println("Авторизация");
         Service.println("1. Ввести логин и пароль");
@@ -20,6 +29,12 @@ public class Authorization {
         }
     }
 
+    /**
+     * Статический метод для получения пары - логин/пароль.
+     *
+     * @param employees - принимает ссылку на список сотрудников организации.
+     * @return - возвращает результат авторизации в виде роли.
+     */
     public static Role enterLoginPassword(List<Employee> employees) {
         Scanner scanner = new Scanner(System.in);
         int attempt = 3;

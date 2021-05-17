@@ -7,8 +7,17 @@ import baseclasses.Role;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Класс для поиска сотрудников в базе данных.
+ */
 public class EmployeeFinder {
 
+    /**
+     * Статический метод для поиска сотрудников в базе данных по ФИО и вывод информации обо всех найденных.
+     *
+     * @param employees    - принимает ссылку на список сотрудников организации.
+     * @param authUserRole - принимает ссылку на роль/права текущего авторизовавшегося пользователя.
+     */
     public static void findEmployeeByFullName(List<Employee> employees, Role authUserRole) {
         StringBuilder stringDataToFile = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
@@ -35,6 +44,14 @@ public class EmployeeFinder {
         Service.println(FileOperations.saveReportToFile(stringDataToFile.toString()));
     }
 
+    /**
+     * Статический метод для вывода информации о найденных сотрудниках
+     * на основании роли/прав авторизовавшегося пользователя.
+     *
+     * @param employee     - принимает ссылку на список сотрудников организации.
+     * @param authUserRole - принимает ссылку на роль/права текущего авторизовавшегося пользователя.
+     * @return - возвращает строку с информацией о сотруднике.
+     */
     public static String getEmployeeStringByAuthRole(Employee employee, Role authUserRole) {
         String employeeData;
         if (authUserRole.equals(Role.EMPLOYEE)) {
@@ -51,6 +68,13 @@ public class EmployeeFinder {
         return employeeData;
     }
 
+    /**
+     * Статический метод для поиска сотрудников в базе данных по должности и вывод информации обо всех найденных.
+     *
+     * @param employees    - принимает ссылку на список сотрудников организации.
+     * @param posts        - принимает ссылку на список должностей организации.
+     * @param authUserRole - принимает ссылку на роль/права текущего авторизовавшегося пользователя.
+     */
     public static void findEmployeeByPost(List<Employee> employees, List<String> posts, Role authUserRole) {
         StringBuilder stringDataToFile = new StringBuilder();
         Service.println("Выберите должность:");
@@ -76,6 +100,12 @@ public class EmployeeFinder {
         Service.println(FileOperations.saveReportToFile(stringDataToFile.toString()));
     }
 
+    /**
+     * Статический метод для получения должности из списка должностей.
+     *
+     * @param posts - принимает ссылку на список должностей организации.
+     * @return - возвращает строку с должностью.
+     */
     public static String getPost(List<String> posts) {
         while (true) {
             for (int i = 0; i < posts.size(); i++) {
@@ -89,6 +119,13 @@ public class EmployeeFinder {
         }
     }
 
+    /**
+     * Статический метод для поиска сотрудников в базе данных по отделу и вывод информации обо всех найденных.
+     *
+     * @param employees    - принимает ссылку на список сотрудников организации.
+     * @param departments  - принимает ссылку на список отделов организации.
+     * @param authUserRole - принимает ссылку на роль/права текущего авторизовавшегося пользователя.
+     */
     public static void findEmployeeByDepartment(List<Employee> employees, List<Department> departments, Role authUserRole) {
         StringBuilder stringDataToFile = new StringBuilder();
         Service.println("Выберите отдел:");
@@ -114,6 +151,12 @@ public class EmployeeFinder {
         Service.println(FileOperations.saveReportToFile(stringDataToFile.toString()));
     }
 
+    /**
+     * Статический метод для получения ссылки на отдел из списка отделов.
+     *
+     * @param departments - принимает ссылку на список отделов организации.
+     * @return - возвращает ссылку на отдел.
+     */
     public static Department getDepartment(List<Department> departments) {
         while (true) {
             for (int i = 0; i < departments.size(); i++) {
@@ -127,6 +170,13 @@ public class EmployeeFinder {
         }
     }
 
+    /**
+     * Статический метод для поиска сотрудников в базе данных по непосредственному начальнику
+     * и вывод информации обо всех найденных.
+     *
+     * @param employees    - принимает ссылку на список сотрудников организации.
+     * @param authUserRole - принимает ссылку на роль/права текущего авторизовавшегося пользователя.
+     */
     public static void findEmployeeByChief(List<Employee> employees, Role authUserRole) {
         StringBuilder stringDataToFile = new StringBuilder();
         Scanner scanner = new Scanner(System.in);

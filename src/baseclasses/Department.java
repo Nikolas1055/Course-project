@@ -2,20 +2,37 @@ package baseclasses;
 
 import java.io.Serializable;
 
+/**
+ * Класс Department. Описывает отдел организации.
+ */
 public class Department implements Serializable {
 
-    private String name; // название отдела
-    private Department superior; // вышестоящий отдел
-    private Employee chief; // начальник отдела
+    private String name;
+    private Department superior;
+    private Employee chief;
 
+    /**
+     * Конструктор по умолчанию.
+     */
     public Department() {
     }
 
+    /**
+     * Конструктор с параметрами.
+     *
+     * @param name     - имя отдела.
+     * @param superior - ссылка на вышестоящий отдел.
+     * @param chief    - ссылка на сотрудника который назначен начальником отдела.
+     */
     public Department(String name, Department superior, Employee chief) {
         this.name = name;
         this.superior = superior;
         this.chief = chief;
     }
+
+    /**
+     * Геттеры и сеттеры.
+     */
 
     public String getName() {
         return name;

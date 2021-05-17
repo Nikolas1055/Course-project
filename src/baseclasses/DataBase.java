@@ -4,23 +4,41 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс DataBase хранит информацию о сотрудниках организации (List<Employee>),
+ * структуре её отделов (List<Department>) и список должностей (List<String>).
+ */
 public class DataBase implements Serializable {
 
-    private List<Department> departments; // отделы
-    private List<Employee> employees; // сотрудники
-    private List<String> posts; // должности
+    private List<Department> departments;
+    private List<Employee> employees;
+    private List<String> posts;
 
+    /**
+     * Конструктор по умолчанию.
+     */
     public DataBase() {
         departments = new ArrayList<>();
         employees = new ArrayList<>();
         posts = new ArrayList<>();
     }
 
+    /**
+     * Конструктор с параметрами.
+     *
+     * @param departments - список отделов.
+     * @param employees   - список сотрудников.
+     * @param posts       - список должностей.
+     */
     public DataBase(ArrayList<Department> departments, ArrayList<Employee> employees, ArrayList<String> posts) {
         this.departments = departments;
         this.employees = employees;
         this.posts = posts;
     }
+
+    /**
+     * Геттеры и сеттеры класса.
+     */
 
     public List<Department> getDepartments() {
         return departments;

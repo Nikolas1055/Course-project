@@ -4,7 +4,7 @@ import officeclasses.AdminPanel;
 import officeclasses.HROffice;
 import serviceclasses.*;
 
-public class Main {
+public class MainUi {
     public static void main(String[] args) {
         DataBase dataBase = FileOperations.loadDataBaseFromFile();
         Role authUserRole = Authorization.authUser(dataBase.getEmployees());

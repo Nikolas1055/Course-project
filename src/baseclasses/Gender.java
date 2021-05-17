@@ -1,5 +1,8 @@
 package baseclasses;
 
+/**
+ * Класс перечисления пола сотрудников.
+ */
 public enum Gender {
     MALE("Муж."),
     FEMALE("Жен."),
