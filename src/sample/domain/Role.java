@@ -1,4 +1,4 @@
-package baseclasses;
+package sample.domain;
 
 /**
  * Класс перечисления ролей (прав доступа) сотрудников.

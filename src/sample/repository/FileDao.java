@@ -1,6 +1,6 @@
-package serviceclasses;
+package sample.repository;
 
-import baseclasses.DataBase;
+import sample.domain.DataBase;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Класс для работы с файловыми операциями ввода вывода.
  */
-public class FileOperations {
+public class FileDao {
 
     /**
      * Поле с наименованием файла базы данных.

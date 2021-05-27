@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="addNewPost" prefHeight="325.0" prefWidth="993.0" style="-fx-background-color: #dae3f0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddNewPostController">
+   <children>
+      <Button fx:id="addNewPostButton" layoutX="375.0" layoutY="258.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="243.0" text="Добавить должность" />
+      <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите название новой должности:" wrappingWidth="243.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="newPostTextField" layoutX="257.0" layoutY="10.0" prefHeight="30.0" prefWidth="400.0" promptText="Должность" />
+      <TextArea fx:id="newPostMessageTextField" layoutX="14.0" layoutY="48.0" prefHeight="200.0" prefWidth="967.0" />
+   </children>
+</AnchorPane>

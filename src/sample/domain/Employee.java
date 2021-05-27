@@ -1,4 +1,4 @@
-package baseclasses;
+package sample.domain;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -219,7 +219,7 @@ public class Employee implements Externalizable {
                 "Дата рождения: " + birthDate + System.lineSeparator() +
                 "Пол: " + gender.getGender() + System.lineSeparator() +
                 "Телефон: " + phoneNumber + System.lineSeparator() +
-                "Отдел: " + department.getName() + System.lineSeparator() +
+                "Отдел: " + (department == null ? "не выбран" : department.getName()) + System.lineSeparator() +
                 "Непосредственный начальник: " + (chief == null ? "отсутствует" :
                 chief.getFullName()) + System.lineSeparator() +
                 "Дата приема на работу: " + employmentDate + System.lineSeparator() +

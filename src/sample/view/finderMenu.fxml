@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.FinderMenuController">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #4a6a9e;">
+            <children>
+                <AnchorPane layoutY="76.0" prefHeight="424.0" prefWidth="1000.0" style="-fx-background-color: #dae3f0;">
+                    <children>
+                        <Label fx:id="messageTextField" alignment="CENTER" layoutY="399.0" prefHeight="25.0" prefWidth="1000.0" style="-fx-background-color: #4a6a9e;" textFill="WHITE" />
+                        <Button fx:id="backButton" layoutX="379.0" layoutY="370.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="243.0" text="Назад" />
+                  <TabPane layoutX="4.0" layoutY="3.0" prefHeight="362.0" prefWidth="993.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab fx:id="findByFullNameTab" text="Поиск сотрудника по ФИО">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="315.0" prefWidth="993.0">
+                                 <children>
+                                    <TextField fx:id="fullNameTextField" layoutX="74.0" layoutY="14.0" prefHeight="25.0" prefWidth="207.0" />
+                                    <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО:" wrappingWidth="56.13671875">
+                                       <font>
+                                          <Font name="System Bold Italic" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="findByFullNameButton" layoutX="291.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" text="Найти" />
+                                    <TextArea fx:id="findByFullNameResultTextField" layoutX="5.0" layoutY="44.0" prefHeight="287.0" prefWidth="984.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab fx:id="findByPostTab" text="Поиск сотрудника по должности">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ChoiceBox fx:id="postChoiceBox" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="354.0" />
+                                    <TextArea fx:id="findByPostResultTextField" layoutX="5.0" layoutY="45.0" prefHeight="286.0" prefWidth="985.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab fx:id="findByDepartmentTab" text="Поиск сотрудника по названию отдела">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ChoiceBox fx:id="departmentChoiceBox" layoutX="14.0" layoutY="13.0" prefHeight="25.0" prefWidth="354.0" />
+                                    <TextArea fx:id="findByDepartmentResultTextField" layoutX="5.0" layoutY="43.0" prefHeight="287.0" prefWidth="985.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="findByChiefTab" text="Поиск сотрудника по ФИО начальника">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="957.0">
+                                 <children>
+                                    <Button fx:id="findByChiefFullNameButton" layoutX="375.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Найти" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО:" wrappingWidth="56.13671875">
+                                       <font>
+                                          <Font name="System Bold Italic" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="chiefFullNameTextField" layoutX="155.0" layoutY="12.0" prefHeight="25.0" prefWidth="207.0" />
+                                    <Text layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО начальника:" wrappingWidth="135.13671875">
+                                       <font>
+                                          <Font name="System Bold Italic" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <TextArea fx:id="findByChiefFullNameResultTextField" layoutX="5.0" layoutY="40.0" prefHeight="290.0" prefWidth="984.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                    </children>
+                </AnchorPane>
+                <Label alignment="CENTER" layoutY="14.0" prefHeight="45.0" prefWidth="1000.0" text="Поиск сотрудника" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold Italic" size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>
