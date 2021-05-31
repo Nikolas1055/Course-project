@@ -1,12 +1,11 @@
-package baseclasses;
+package sample.domain;
 
 /**
  * Класс перечисления пола сотрудников.
  */
 public enum Gender {
     MALE("Муж."),
-    FEMALE("Жен."),
-    GENDERLESS("NONE");
+    FEMALE("Жен.");
 
     private final String gender;
 

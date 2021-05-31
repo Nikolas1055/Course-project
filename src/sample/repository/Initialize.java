@@ -1,6 +1,6 @@
-package serviceclasses;
+package sample.repository;
 
-import baseclasses.*;
+import sample.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * Класс для первичной инициализации базы данных дефолтными значениями.
  */
 public class Initialize {
-    private DataBase dataBase;
+    private final DataBase dataBase;
 
     /**
      * Конструктор с параметрами.
