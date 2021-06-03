@@ -1,6 +1,6 @@
 package sample.repository;
 
-import sample.domain.DataBase;
+import sample.services.DBSingleton;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -11,7 +11,6 @@ import java.time.format.DateTimeFormatter;
  * Класс для работы с файловыми операциями ввода вывода.
  */
 public class FileDao {
-
     /**
      * Поле с наименованием файла базы данных.
      */
@@ -26,6 +25,7 @@ public class FileDao {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(DATABASE_FILENAME))) {
             outputStream.writeObject(dataBase);
         } catch (IOException e) {
+            //TODO заменить
             e.printStackTrace();
         }
     }
@@ -41,7 +41,7 @@ public class FileDao {
             return (DataBase) inputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             DataBase dataBase = new DataBase();
-            Initialize initialize = new Initialize(dataBase);
+            DbInitializer initialize = new DbInitializer(dataBase);
             initialize.postsInit();
             initialize.departmentInit();
             initialize.employeeInit();
@@ -59,12 +59,12 @@ public class FileDao {
      */
     public static String saveReportToFile(String string) {
         String reportFileName = "Report_" + LocalDate.now().format(DateTimeFormatter.ofPattern("dd_MM_yy")) + "_" +
-                LocalTime.now().format(DateTimeFormatter.ofPattern("hh_mm_ss")) + ".txt";
+                LocalTime.now().format(DateTimeFormatter.ofPattern("HH_mm_ss_SSS")) + ".txt";
         try (FileWriter fileWriter = new FileWriter(reportFileName)) {
             fileWriter.write(string);
         } catch (IOException e) {
-            return "Не удалось сохранить отчет.";
+            return DBSingleton.getInstance().getResourceBundle().getString("error_message");
         }
-        return ("Отчет сохранен в файле - " + reportFileName);
+        return (DBSingleton.getInstance().getResourceBundle().getString("save_message") + reportFileName);
     }
 }

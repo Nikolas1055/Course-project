@@ -1,14 +1,21 @@
 package sample.services;
 
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import sample.ui.views.Config;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
+/**
+ * Унифицированная фабрика создания окон программы
+ */
 public class StageFabric {
     private final String view;
 
@@ -16,9 +23,20 @@ public class StageFabric {
         this.view = view;
     }
 
+    /**
+     * Создает новое окно на основе переданного FXML файла
+     *
+     * @return - возвращает STAGE
+     */
     public Stage stage() {
+        ResourceBundle resourceBundle = DBSingleton.getInstance().getResourceBundle();
+        FadeTransition fade = new FadeTransition();
+        fade.setDuration(Duration.millis(1000));
+        fade.setFromValue(0.0);
+        fade.setToValue(1.0);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(view));
+        loader.setResources(resourceBundle);
         try {
             loader.load();
         } catch (IOException e) {
@@ -26,9 +44,14 @@ public class StageFabric {
         }
         Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("../view/auth_icon.png"))));
-        stage.setTitle("Система учета сотрудников");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass()
+                .getResourceAsStream(Config.ICON))));
+        stage.setTitle(resourceBundle.getString("title"));
+        stage.setResizable(false);
+        fade.setNode(root);
+        fade.play();
         return stage;
     }
 }

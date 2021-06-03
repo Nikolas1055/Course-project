@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="sample.presenter.main.HrOfficeMenuController">
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #4a6a9e;">
+            <children>
+                <AnchorPane layoutY="76.0" prefHeight="424.0" prefWidth="1000.0" style="-fx-background-color: #dae3f0;">
+                    <children>
+                        <Label fx:id="messageTextField" alignment="CENTER" layoutY="399.0" prefHeight="25.0"
+                               prefWidth="1000.0" style="-fx-background-color: #4a6a9e;" textFill="WHITE"/>
+                        <Button fx:id="backButton" layoutX="379.0" layoutY="370.0" mnemonicParsing="false"
+                                prefHeight="25.0" prefWidth="243.0" text="%common_back_button"/>
+                        <TabPane fx:id="hrOfficeTabPane" layoutX="4.0" layoutY="3.0" prefHeight="362.0"
+                                 prefWidth="993.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="300.0"
+                                 tabMaxWidth="300.0" tabMinHeight="30.0" tabMinWidth="150.0">
+                            <tabs>
+                                <Tab fx:id="addNewEmployeeTab" text="%hr_tab1">
+                                    <content>
+                                        <fx:include source="addNewEmployee.fxml"/>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="addNewPostTab" text="%hr_tab2">
+                                    <content>
+                                        <fx:include source="addNewPost.fxml"/>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="addNewDepartmentTab" text="%hr_tab3">
+                                    <content>
+                                        <fx:include source="addNewDepartment.fxml"/>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="changeEmployeeTab" text="%hr_tab4">
+                                    <content>
+                                        <fx:include source="changeEmployee.fxml"/>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="changeDepartmentTab" text="%hr_tab5">
+                                    <content>
+                                        <fx:include source="changeDepartment.fxml"/>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="dismissEmployeeTab" text="%hr_tab6">
+                                    <content>
+                                        <fx:include source="dismissEmployee.fxml"/>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </AnchorPane>
+                <Label alignment="CENTER" layoutY="14.0" prefHeight="45.0" prefWidth="1000.0" text="%hr_title"
+                       textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold Italic" size="24.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>
