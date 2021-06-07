@@ -38,7 +38,7 @@ public class CommonUiService {
                     @Override
                     protected void updateItem(Department item, boolean empty) {
                         super.updateItem(item, empty);
-                        setText(empty ? "" : item.getName());
+                        setText(empty ? "" : item == null ? "" : item.getName());
                     }
                 };
             }
@@ -73,7 +73,7 @@ public class CommonUiService {
                     @Override
                     protected void updateItem(Employee item, boolean empty) {
                         super.updateItem(item, empty);
-                        setText(empty ? "" : item.getFullName());
+                        setText(empty ? "" : item == null ? "" : item.getFullName());
                     }
                 };
             }

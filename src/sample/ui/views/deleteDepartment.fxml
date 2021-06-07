@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="325.0" prefWidth="993.0" style="-fx-background-color: #dae3f0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.presenter.admin.DeleteDepartmentController">
+   <children>
+      <ComboBox fx:id="departmentToDeleteComboBox" layoutX="298.0" layoutY="8.0" prefHeight="30.0" prefWidth="400.0" />
+      <Text layoutX="25.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%del_dep_text" wrappingWidth="243.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="deleteDepartmentButton" layoutX="375.0" layoutY="258.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="243.0" text="%delete_dep_button" />
+      <TextArea fx:id="deleteDepartmentTextArea" editable="false" layoutX="25.0" layoutY="50.0" prefHeight="199.0" prefWidth="945.0" />
+   </children>
+</AnchorPane>

@@ -27,26 +27,55 @@ public class ChangeDepartmentController {
     private TextArea changeDepartmentTextArea;
     @FXML
     private TextField changeDepartmentNameTextField;
+    @FXML
+    private Button setEmptyChiefButton;
+    @FXML
+    private Button setEmptySuperiorDepButton;
 
     @FXML
     void initialize() {
+        ChangeDepartmentLoader changeDepartmentLoader = new ChangeDepartmentLoader();
         ResourceBundle resourceBundle = DBSingleton.getInstance().getResourceBundle();
         changeDepartmentTextArea.setText(resourceBundle.getString("change_dep_msg1"));
         changeDepartmentButton.disableProperty().bind(
                 Bindings.isEmpty(changeDepartmentNameTextField.textProperty())
         );
+        setEmptyChiefButton.disableProperty().bind(
+                Bindings.isEmpty(changeDepartmentNameTextField.textProperty())
+        );
+        setEmptySuperiorDepButton.disableProperty().bind(
+                Bindings.isEmpty(changeDepartmentNameTextField.textProperty())
+        );
+
+        setEmptyChiefButton.setOnAction(event -> {
+            changeChiefDepartmentComboBox.getSelectionModel().clearSelection();
+            changeChiefDepartmentComboBox.setValue(null);
+        });
+
+        setEmptySuperiorDepButton.setOnAction(event -> {
+            if (changeDepartmentLoader.checkForSubordinateDepartment(departmentToChangeComboBox.getValue())) {
+                changeSuperiorDepartmentComboBox.getSelectionModel().clearSelection();
+                changeSuperiorDepartmentComboBox.setValue(null);
+            }
+            changeDepartmentTextArea.setText(resourceBundle.getString("change_dep_msg5"));
+        });
+
 
         departmentToChangeComboBox.getSelectionModel()
                 .selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
-                        changeDepartmentNameTextField.setText(departmentToChangeComboBox.getValue().getName());
-                        changeSuperiorDepartmentComboBox.setValue(departmentToChangeComboBox.getValue().getSuperior());
-                        changeChiefDepartmentComboBox.setValue(departmentToChangeComboBox.getValue().getChief());
+                        if (changeDepartmentLoader.checkIfDepartmentIsCompanyHead(newValue)) {
+                            clearSelection();
+                            changeDepartmentTextArea.setText(resourceBundle.getString("change_dep_msg6"));
+                        } else {
+                            changeDepartmentTextArea.setText(resourceBundle.getString("change_dep_msg7"));
+                            changeDepartmentNameTextField.setText(departmentToChangeComboBox.getValue().getName());
+                            changeSuperiorDepartmentComboBox.setValue(departmentToChangeComboBox.getValue().getSuperior());
+                            changeChiefDepartmentComboBox.setValue(departmentToChangeComboBox.getValue().getChief());
+                        }
                     } else {
-                        changeDepartmentNameTextField.clear();
-                        changeSuperiorDepartmentComboBox.getSelectionModel().clearSelection();
-                        changeChiefDepartmentComboBox.getSelectionModel().clearSelection();
+                        clearSelection();
                     }
                 });
 
@@ -54,7 +83,7 @@ public class ChangeDepartmentController {
             if (departmentToChangeComboBox.getSelectionModel().isEmpty()) {
                 changeDepartmentTextArea.setText(resourceBundle.getString("change_dep_msg2"));
             } else {
-                if (new ChangeDepartmentLoader().changeDepartment(
+                if (changeDepartmentLoader.changeDepartment(
                         departmentToChangeComboBox.getValue(),
                         changeDepartmentNameTextField.getText().trim(),
                         changeSuperiorDepartmentComboBox.getValue(),
@@ -75,6 +104,12 @@ public class ChangeDepartmentController {
             changeChiefDepartmentComboBox.setItems(CommonUiService.getEmployees());
             CommonUiService.setEmployee(changeChiefDepartmentComboBox);
         });
+    }
+
+    private void clearSelection() {
+        changeDepartmentNameTextField.clear();
+        changeSuperiorDepartmentComboBox.getSelectionModel().clearSelection();
+        changeChiefDepartmentComboBox.getSelectionModel().clearSelection();
     }
 }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="993.0" style="-fx-background-color: #dae3f0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.presenter.admin.DataBaseOperationsController">
+   <children>
+      <Button fx:id="saveDataBaseButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="243.0" text="%save_dataBase" />
+      <TextArea fx:id="dataBaseOperationsTextArea" layoutX="14.0" layoutY="76.0" prefHeight="236.0" prefWidth="965.0" style="-fx-background-color: #dae3f0;" />
+   </children>
+</AnchorPane>

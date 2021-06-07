@@ -43,5 +43,9 @@
             </font>
         </Text>
         <TextArea fx:id="changeDepartmentTextArea" layoutX="25.0" layoutY="163.0" prefHeight="86.0" prefWidth="945.0"/>
+        <Button fx:id="setEmptySuperiorDepButton" layoutX="662.0" layoutY="88.0" mnemonicParsing="false"
+                prefHeight="30.0" prefWidth="200.0" text="%change_dep_empty_dep_button"/>
+        <Button fx:id="setEmptyChiefButton" layoutX="662.0" layoutY="123.0" mnemonicParsing="false" prefHeight="30.0"
+                prefWidth="200.0" text="%change_dep_empty_chief_button"/>
     </children>
 </AnchorPane>

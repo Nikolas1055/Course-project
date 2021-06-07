@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import sample.domain.Employee;
+import sample.domain.Role;
 import sample.services.DBSingleton;
 import sample.services.hr.DismissEmployeeLoader;
 import sample.ui.CommonUiService;
@@ -38,6 +39,9 @@ public class DismissEmployeeController {
                     } else if (newValue != null) {
                         if (dismissEmployeeLoader.checkAuthEmployee(newValue)) {
                             dismissMessageTextArea.setText(resourceBundle.getString("dismiss_emp_msg4"));
+                        } else if (newValue.getRole() == Role.ADMINISTRATOR &&
+                                !dismissEmployeeLoader.checkAdministrator()) {
+                            dismissMessageTextArea.setText(resourceBundle.getString("dismiss_emp_msg7"));
                         } else {
                             dismissEmployeeButton.setDisable(false);
                             dismissMessageTextArea.setText(resourceBundle.getString("dismiss_emp_msg5"));

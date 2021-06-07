@@ -21,13 +21,13 @@ public class FileDao {
      *
      * @param dataBase - принимает ссылку на объект базы данных.
      */
-    public static void saveDataBaseToFile(DataBase dataBase) {
+    public static String saveDataBaseToFile(DataBase dataBase) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(DATABASE_FILENAME))) {
             outputStream.writeObject(dataBase);
         } catch (IOException e) {
-            //TODO заменить
-            e.printStackTrace();
+            return e.toString();
         }
+        return null;
     }
 
     /**

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #4a6a9e;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.presenter.AdminPanelController">
+    <children>
+        <Label alignment="CENTER" layoutY="8.0" prefHeight="45.0" prefWidth="1000.0" text="%admin_title"
+               textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold Italic" size="24.0"/>
+            </font>
+        </Label>
+        <AnchorPane layoutY="59.0" prefHeight="424.0" prefWidth="1000.0" style="-fx-background-color: #dae3f0;">
+            <children>
+                <Label fx:id="messageTextField" alignment="CENTER" layoutY="416.0" prefHeight="25.0" prefWidth="1000.0"
+                       style="-fx-background-color: #4a6a9e;" textFill="WHITE"/>
+                <TabPane fx:id="hrOfficeTabPane" prefHeight="362.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE"
+                         tabMaxHeight="300.0" tabMaxWidth="300.0" tabMinHeight="40.0" tabMinWidth="234.0"
+                         AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                         AnchorPane.topAnchor="0.0">
+                    <tabs>
+                        <Tab fx:id="dbOperationsTab" text="%admin_tab1">
+                            <content>
+                                <fx:include source="dataBaseOperations.fxml"/>
+                            </content>
+                        </Tab>
+                        <Tab fx:id="changeCompanyDataTab" text="%admin_tab2">
+                            <content>
+                                <fx:include source="changeCompanyData.fxml"/>
+                            </content>
+                        </Tab>
+                        <Tab fx:id="deleteDepartmentTab" text="%admin_tab3">
+                            <content>
+                                <fx:include source="deleteDepartment.fxml"/>
+                            </content>
+                        </Tab>
+                        <Tab fx:id="changeEmployeeAuthDataTab" text="%admin_tab4">
+                            <content>
+                                <fx:include source="changeEmployeeAuthData.fxml"/>
+                            </content>
+                        </Tab>
+                    </tabs>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </TabPane>
+                <Button fx:id="backButton" layoutX="379.0" layoutY="381.0" mnemonicParsing="false" prefHeight="25.0"
+                        prefWidth="243.0" text="%common_back_button"/>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
