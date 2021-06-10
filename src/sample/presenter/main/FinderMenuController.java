@@ -6,8 +6,10 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import sample.domain.Department;
 import sample.services.DBSingleton;
+import sample.services.StageFabric;
 import sample.services.main.FinderMenuLoader;
 import sample.ui.CommonUiService;
+import sample.ui.views.Config;
 
 public class FinderMenuController {
     private final FinderMenuLoader finderMenuLoader = new FinderMenuLoader();
@@ -59,6 +61,7 @@ public class FinderMenuController {
         backButton.setOnAction(actionEvent -> {
             Stage stage = (Stage) backButton.getScene().getWindow();
             stage.close();
+            new StageFabric(Config.MAIN_MENU).stage().show();
         });
     }
 

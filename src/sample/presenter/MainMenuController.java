@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import sample.services.DBSingleton;
 import sample.services.MainMenuLoader;
 import sample.services.StageFabric;
@@ -59,12 +60,19 @@ public class MainMenuController {
         findEmployeeButton.addEventHandler(MouseEvent.MOUSE_EXITED, mouseEvent ->
                 removeButtonEffect(findEmployeeButton));
 
-
         messageTextField.setText(resourceBundle.getString("main_message3"));
-        hrOfficeButton.setOnAction(actionEvent -> new StageFabric(Config.HR_OFFICE_MENU).stage().show());
-        reportsButton.setOnAction(actionEvent -> new StageFabric(Config.REPORTS_MENU).stage().show());
-        findEmployeeButton.setOnAction(actionEvent -> new StageFabric(Config.FINDER_MENU).stage().show());
-        adminPanelButton.setOnAction(actionEvent -> new StageFabric(Config.ADMIN_PANEL).stage().show());
+        hrOfficeButton.setOnAction(actionEvent -> {
+            showNewStage(hrOfficeButton, Config.HR_OFFICE_MENU);
+            });
+        reportsButton.setOnAction(actionEvent -> {
+            showNewStage(reportsButton, Config.REPORTS_MENU);
+        });
+        findEmployeeButton.setOnAction(actionEvent -> {
+            showNewStage(findEmployeeButton, Config.FINDER_MENU);
+        });
+        adminPanelButton.setOnAction(actionEvent -> {
+            showNewStage(adminPanelButton, Config.ADMIN_PANEL);
+        });
     }
 
     private void setButtonEffects(String message, Button button) {
@@ -75,5 +83,11 @@ public class MainMenuController {
     private void removeButtonEffect(Button button) {
         messageTextField.setText(resourceBundle.getString("main_message3"));
         button.setEffect(null);
+    }
+
+    private void showNewStage(Button button, String fxml) {
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.close();
+        new StageFabric(fxml).stage().show();
     }
 }

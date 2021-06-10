@@ -4,6 +4,8 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -11,6 +13,7 @@ import sample.ui.views.Config;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -49,6 +52,20 @@ public class StageFabric {
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass()
                 .getResourceAsStream(Config.ICON))));
         stage.setTitle(resourceBundle.getString("title"));
+        stage.setOnCloseRequest(windowEvent -> {
+            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, resourceBundle.getString("main_message1"));
+            Stage dialogStage = (Stage) dialog.getDialogPane().getScene().getWindow();
+            dialogStage.getIcons().add(new Image(Objects.requireNonNull(getClass()
+                    .getResourceAsStream(Config.ICON))));
+            dialog.setTitle(resourceBundle.getString("main_message2"));
+            dialog.setHeaderText(null);
+            Optional<ButtonType> result = dialog.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                new MainMenuLoader().saveDataBaseAndExit();
+            } else {
+                windowEvent.consume();
+            }
+        });
         stage.setResizable(false);
         fade.setNode(root);
         fade.play();

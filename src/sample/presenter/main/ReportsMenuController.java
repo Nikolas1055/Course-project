@@ -6,7 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import sample.services.DBSingleton;
+import sample.services.StageFabric;
 import sample.services.main.ReportLoader;
+import sample.ui.views.Config;
 
 public class ReportsMenuController {
     private final ReportLoader reportLoader = new ReportLoader();
@@ -40,6 +42,7 @@ public class ReportsMenuController {
         backButton.setOnAction(actionEvent -> {
             Stage stage = (Stage) backButton.getScene().getWindow();
             stage.close();
+            new StageFabric(Config.MAIN_MENU).stage().show();
         });
     }
 

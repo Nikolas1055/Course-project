@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+import sample.services.StageFabric;
+import sample.ui.views.Config;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,6 +40,7 @@ public class AdminPanelController {
         backButton.setOnAction(actionEvent -> {
             Stage stage = (Stage) backButton.getScene().getWindow();
             stage.close();
+            new StageFabric(Config.MAIN_MENU).stage().show();
         });
 
     }
