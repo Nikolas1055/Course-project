@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="changeDepartmentAnchorPane" prefHeight="325.0" prefWidth="993.0"
+            style="-fx-background-color: #dae3f0;" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.presenter.hr.ChangeDepartmentController">
+    <children>
+        <ComboBox fx:id="changeChiefDepartmentComboBox" layoutX="237.0" layoutY="123.0" prefHeight="30.0"
+                  prefWidth="400.0"/>
+        <ComboBox fx:id="changeSuperiorDepartmentComboBox" layoutX="237.0" layoutY="88.0" prefHeight="30.0"
+                  prefWidth="400.0"/>
+        <ComboBox fx:id="departmentToChangeComboBox" layoutX="237.0" layoutY="8.0" prefHeight="30.0" prefWidth="400.0"/>
+        <Text layoutX="26.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%change_dep_text1"
+              wrappingWidth="211.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <Button fx:id="changeDepartmentButton" layoutX="375.0" layoutY="258.0" mnemonicParsing="false" prefHeight="53.0"
+                prefWidth="243.0" text="%change_dep_button"/>
+        <Text layoutX="26.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%change_dep_text2"
+              wrappingWidth="188.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <TextField fx:id="changeDepartmentNameTextField" layoutX="237.0" layoutY="54.0" prefHeight="30.0"
+                   prefWidth="400.0"/>
+        <Text layoutX="26.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%change_dep_text3"
+              wrappingWidth="208.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <Text layoutX="26.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%change_dep_text4"
+              wrappingWidth="197.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <TextArea fx:id="changeDepartmentTextArea" layoutX="25.0" layoutY="163.0" prefHeight="86.0" prefWidth="945.0"/>
+        <Button fx:id="setEmptySuperiorDepButton" layoutX="662.0" layoutY="88.0" mnemonicParsing="false"
+                prefHeight="30.0" prefWidth="200.0" text="%change_dep_empty_dep_button"/>
+        <Button fx:id="setEmptyChiefButton" layoutX="662.0" layoutY="123.0" mnemonicParsing="false" prefHeight="30.0"
+                prefWidth="200.0" text="%change_dep_empty_chief_button"/>
+    </children>
+</AnchorPane>

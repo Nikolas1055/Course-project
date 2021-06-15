@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="325.0" prefWidth="993.0" style="-fx-background-color: #dae3f0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.presenter.admin.ChangeCompanyDataController">
+   <children>
+      <Button fx:id="changeCompanyDataButton" layoutX="372.0" layoutY="261.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="%change_company_data_button" />
+      <TextField fx:id="companyNameTextField" layoutX="245.0" layoutY="14.0" prefHeight="40.0" prefWidth="500.0" promptText="%change_company_text" />
+      <ComboBox fx:id="companyChiefComboBox" layoutX="245.0" layoutY="67.0" prefHeight="40.0" prefWidth="500.0" />
+      <TextArea fx:id="changeCompanyTextArea" layoutX="13.0" layoutY="122.0" prefHeight="125.0" prefWidth="969.0" />
+   </children>
+</AnchorPane>

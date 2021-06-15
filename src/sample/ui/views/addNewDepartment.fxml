@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="addNewDepartmentAnchorPane" prefHeight="325.0" prefWidth="993.0"
+            style="-fx-background-color: #dae3f0;" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.presenter.hr.AddNewDepartmentController">
+    <children>
+        <ComboBox fx:id="chiefNewDepartmentComboBox" layoutX="257.0" layoutY="48.0" prefHeight="30.0" prefWidth="400.0"
+                  promptText="%add_dep_chief_box"/>
+        <ComboBox fx:id="superiorNewDepartmentComboBox" layoutX="257.0" layoutY="84.0" prefHeight="30.0"
+                  prefWidth="400.0" promptText="%add_dep_superior_box"/>
+        <Text layoutX="14.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%add_dep_text2"
+              wrappingWidth="220.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <Text layoutX="14.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%add_dep_text3"
+              wrappingWidth="220.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <TextField fx:id="newDepartmentTextField" layoutX="257.0" layoutY="13.0" prefHeight="30.0" prefWidth="400.0"
+                   promptText="%add_dep_text_field"/>
+        <Text layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%add_dep_text1"
+              wrappingWidth="243.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <Button fx:id="addNewDepartmentButton" layoutX="375.0" layoutY="258.0" mnemonicParsing="false" prefHeight="53.0"
+                prefWidth="243.0" text="%add_dep_button"/>
+        <TextArea fx:id="newDepartmentTextArea" layoutX="14.0" layoutY="123.0" prefHeight="126.0" prefWidth="969.0"/>
+    </children>
+</AnchorPane>

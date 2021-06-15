@@ -6,7 +6,6 @@ import java.io.Serializable;
  * Класс Department. Описывает отдел организации.
  */
 public class Department implements Serializable {
-
     private String name;
     private Department superior;
     private Employee chief;
@@ -33,7 +32,6 @@ public class Department implements Serializable {
     /**
      * Геттеры и сеттеры.
      */
-
     public String getName() {
         return name;
     }

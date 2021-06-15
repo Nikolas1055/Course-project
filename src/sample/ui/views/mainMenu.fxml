@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="sample.presenter.MainMenuController">
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #4a6a9e;">
+            <children>
+                <AnchorPane layoutY="76.0" prefHeight="224.0" prefWidth="500.0" style="-fx-background-color: #dae3f0;">
+                    <children>
+                        <Button fx:id="findEmployeeButton" layoutX="175.0" layoutY="14.0" mnemonicParsing="false"
+                                prefHeight="40.0" prefWidth="150.0" text="%main_find_button"/>
+                        <Label fx:id="messageTextField" alignment="CENTER" layoutY="202.0" prefHeight="25.0"
+                               prefWidth="500.0" style="-fx-background-color: #4a6a9e;" textFill="WHITE"/>
+                        <Button fx:id="reportsButton" layoutX="175.0" layoutY="61.0" mnemonicParsing="false"
+                                prefHeight="40.0" prefWidth="150.0" text="%main_report_button"/>
+                        <Button fx:id="hrOfficeButton" layoutX="175.0" layoutY="108.0" mnemonicParsing="false"
+                                prefHeight="40.0" prefWidth="150.0" text="%main_hr_office_button"/>
+                        <Button fx:id="adminPanelButton" layoutX="175.0" layoutY="155.0" mnemonicParsing="false"
+                                prefHeight="40.0" prefWidth="150.0" text="%main_admin_button"/>
+                    </children>
+                </AnchorPane>
+                <Label alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="45.0" prefWidth="476.0"
+                       text="%title" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold Italic" size="24.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>

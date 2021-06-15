@@ -8,10 +8,8 @@ import java.util.Base64;
  * Класс Employee. Описывает сотрудника организации.
  */
 public class Employee implements Externalizable {
-
     @Serial
     private static final long serialVersionUID = 1L;
-
     private String surname;
     private String name;
     private String patronymic;
@@ -84,7 +82,6 @@ public class Employee implements Externalizable {
     /**
      * Геттеры и сеттеры.
      */
-
     public String getSurname() {
         return surname;
     }
@@ -204,26 +201,6 @@ public class Employee implements Externalizable {
      */
     public String getFullName() {
         return surname + " " + name + " " + patronymic;
-    }
-
-    /**
-     * Метод служит для вывода полной информации о сотруднике (исключая логин и пароль),
-     * для сотрудников с ролью HR_OFFICE и ADMINISTRATOR.
-     *
-     * @return - строка с полной информацией о сотруднике (исключая логин и пароль).
-     */
-    @Override
-    public String toString() {
-        return role.getRoleType() + ": " + surname + " " + name + " " + patronymic + System.lineSeparator() +
-                "Должность: " + post + System.lineSeparator() +
-                "Дата рождения: " + birthDate + System.lineSeparator() +
-                "Пол: " + gender.getGender() + System.lineSeparator() +
-                "Телефон: " + phoneNumber + System.lineSeparator() +
-                "Отдел: " + (department == null ? "не выбран" : department.getName()) + System.lineSeparator() +
-                "Непосредственный начальник: " + (chief == null ? "отсутствует" :
-                chief.getFullName()) + System.lineSeparator() +
-                "Дата приема на работу: " + employmentDate + System.lineSeparator() +
-                "Зарплата: " + salary;
     }
 
     /**
